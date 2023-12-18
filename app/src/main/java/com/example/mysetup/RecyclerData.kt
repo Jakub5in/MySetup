@@ -1,13 +1,13 @@
 package com.example.mysetup
+import java.io.Serializable
 
-class RecyclerData(
+data class RecyclerData(
     var name: String,
-    var img: Int,
-    var isSelected: Boolean
-) {
-
+    var isSelected: Boolean) : Serializable {
     fun setIsSelected(value: Boolean) {
         isSelected = value
     }
+
+
 
 }
