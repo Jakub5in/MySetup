@@ -1,9 +1,32 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.MySetup" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+        <!-- Primary color -->
+        <item name="colorPrimary">@color/SpaceCadet</item>
+        <item name="colorPrimaryVariant">@color/YaleBlue</item>
 
+        <!-- Secondary color -->
+        <item name="colorSecondary">@color/HonoluluBlue</item>
+        <item name="colorSecondaryVariant">@color/PictonBlue</item>
+
+        <!-- Background color -->
+        <item name="colorBackgroundFloating">@color/White</item>
+        <item name="colorSurface">@color/AntiflashWhite</item>
+        <item name="colorError">@color/Citrine</item>
+
+        <!-- Text color -->
+        <item name="colorOnPrimary">@color/White</item>
+        <item name="colorOnSecondary">@color/Black</item>
+        <item name="colorOnBackground">@color/Black</item>
+        <item name="colorOnSurface">@color/Black</item>
+        <item name="colorOnError">@color/Black</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+
+        <!-- Accent color -->
+        <item name="colorAccent" >@color/Citrine</item>
+
+    </style>
     <style name="Theme.MySetup" parent="Base.Theme.MySetup" />
 </resources>

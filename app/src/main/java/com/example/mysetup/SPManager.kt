@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+// Serialization and deserialization class
 class SPManager(private val context: Context) {
 
     private val sharedPreferences: SharedPreferences by lazy {

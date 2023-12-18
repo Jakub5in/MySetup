@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="Black">#FF000000</color>
+    <color name="White">#FFFFFFFF</color>
+
+    <!-- Theme colors -->
+    <color name="SpaceCadet">#23233B</color>
+    <color name="YaleBlue">#2C4268</color>
+    <color name="HonoluluBlue">#007BBA</color>
+    <color name="PictonBlue">#00A9E2</color>
+    <color name="AntiflashWhite">#EBEBEB</color>
+    <color name="EerieBlack">#1A1A1A</color>
+    <color name="Citrine">#E0CA3C</color>
+
+
+
 </resources>

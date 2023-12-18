@@ -4,49 +4,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#1d2d44"
     android:orientation="vertical"
     android:padding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="154dp">
+        android:layout_height="wrap_content">
 
-        <EditText
+        <TextView
             android:id="@+id/editText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:hint="Name"
+            android:text="@string/confirm"
             android:textSize="34sp"
-            android:textColor="#F0EBD8"
-            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/add"
+            android:id="@+id/button_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Add"
+            android:text="@string/yes"
             android:textSize="34sp"
-            app:layout_constraintEnd_toStartOf="@+id/cancel"
+            app:layout_constraintEnd_toStartOf="@+id/button_cancel"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText" />
 
         <Button
-            android:id="@+id/cancel"
+            android:id="@+id/button_cancel"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textSize="34sp"
-            app:layout_constraintStart_toEndOf="@+id/add"
+            app:layout_constraintStart_toEndOf="@+id/button_yes"
             app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
