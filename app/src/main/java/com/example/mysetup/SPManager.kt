@@ -14,18 +14,18 @@ class SPManager(private val context: Context) {
 
     private val gson: Gson by lazy { Gson() }
 
-    fun saveList(list: MutableList<RecyclerData>) {
+    fun saveList(list: MutableList<Bike>) {
         val json = gson.toJson(list)
         sharedPreferences.edit().putString("listkey", json).apply()
     }
 
-    fun getList(): MutableList<RecyclerData> {
+    fun getList(): MutableList<Bike> {
         val json = sharedPreferences.getString("listkey", "")
         if (json.isNullOrEmpty()) {
             return mutableListOf()
         }
 
-        val type = object : TypeToken<MutableList<RecyclerData>>() {}.type
+        val type = object : TypeToken<MutableList<Bike>>() {}.type
         return gson.fromJson(json, type)
     }
 

@@ -22,11 +22,12 @@
         <item name="colorOnError">@color/Black</item>
 
         <!-- Status bar color -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
         <!-- Accent color -->
-        <item name="colorAccent" >@color/Citrine</item>
+        <item name="colorAccent">@color/Citrine</item>
 
     </style>
+
     <style name="Theme.MySetup" parent="Base.Theme.MySetup" />
 </resources>

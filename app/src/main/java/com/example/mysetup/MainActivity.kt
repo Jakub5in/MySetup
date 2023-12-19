@@ -1,7 +1,9 @@
 package com.example.mysetup
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +17,18 @@ import android.widget.PopupWindow
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity(), RecyclerAdapter.OnItemClickListener {
+// TODO:
+//  Class for bike settings
+//  MutableList of this class in RecyclerData
+//  Finishing activity_bike.xml, to show bike setting List as recyclerView
+//  Filtering options
+
+class MainActivity : AppCompatActivity(), BikeRecyclerAdapter.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var recyclerAdapter: RecyclerAdapter
-    private var dataList = mutableListOf<RecyclerData>()
+    private lateinit var recyclerAdapter: BikeRecyclerAdapter
+    private var dataList = mutableListOf<Bike>()
     private val  spm = SPManager(this)
+    private val REQUEST_CODE_BIKE_ACTIVITY = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,20 +39,43 @@ class MainActivity : AppCompatActivity(), RecyclerAdapter.OnItemClickListener {
         // Deserializing list
         dataList = spm.getList()
 
-        recyclerAdapter = RecyclerAdapter(dataList)
+        recyclerAdapter = BikeRecyclerAdapter(dataList)
         recyclerAdapter.onItemClickListener = this
         recyclerView.adapter = recyclerAdapter
 
         // Checking if value is passed and if so, removing it from list
         if (intent.hasExtra("remove")) {
-            val receivedItem = intent?.getSerializableExtra("remove") as RecyclerData
+            val receivedItem = intent?.getSerializableExtra("remove") as Bike
             dataList.remove(receivedItem)
         }
+
 
         // Setting add new button behaviour
         val buttonShowPopup = findViewById<Button>(R.id.button2)
         buttonShowPopup.setOnClickListener {
             addNew()
+        }
+
+        if(isNightModeEnabled()){
+            R.color.TextOnBackground = Color.WHITE
+        }else{
+            R.color.TextOnBackground = Color.BLACK
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            val updatedBike = data?.getSerializableExtra("updatedBike") as? Bike
+            updatedBike?.let {
+                val index = dataList.indexOfFirst { it.name == updatedBike.name }
+                if (index != -1) {
+                    dataList[index] = updatedBike
+                    recyclerAdapter.notifyItemChanged(index)
+                }
+            }
         }
     }
 
@@ -54,10 +86,10 @@ class MainActivity : AppCompatActivity(), RecyclerAdapter.OnItemClickListener {
     }
 
     // Passing clicked RecyclerData to BikeActivity and opening it
-    override fun onItemClick(item: RecyclerData) {
+    override fun onItemClick(item: Bike) {
         val intent = Intent(this, BikeActivity::class.java)
         intent.putExtra("key", item)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_CODE_BIKE_ACTIVITY)
     }
 
     // Button behaviour function
@@ -84,7 +116,7 @@ class MainActivity : AppCompatActivity(), RecyclerAdapter.OnItemClickListener {
         buttonAdd.setOnClickListener {
             val enteredName = editText.text.toString()
             // Adding new RecyclerData to list
-            dataList.add(RecyclerData(enteredName, false))
+            dataList.add(Bike(enteredName, false))
             popupWindow.dismiss()
         }
 
@@ -102,5 +134,10 @@ class MainActivity : AppCompatActivity(), RecyclerAdapter.OnItemClickListener {
 
         val alphaComponent = (Color.alpha(color) * alpha).toInt()
         return Color.argb(alphaComponent, Color.red(color), Color.green(color), Color.blue(color))
+    }
+
+    private fun isNightModeEnabled(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
     }
 }

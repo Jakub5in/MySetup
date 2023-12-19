@@ -7,4 +7,11 @@
     <string name="cancel">Cancel</string>
     <string name="confirm">Are you sure?</string>
     <string name="yes">Yes</string>
+    <string name="filter">Filter</string>
+    <string name="title_filter">Filter your setups</string>
+    <string name="accept">Accept</string>
+    <string name="wetness">Track wetness</string>
+    <string name="slope">Track slope</string>
+    <string name="rough">Track roughness</string>
+    <string name="title_activity_setup">Papiez polak</string>
 </resources>

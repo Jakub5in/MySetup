@@ -12,6 +12,8 @@
     <color name="EerieBlack">#1A1A1A</color>
     <color name="Citrine">#E0CA3C</color>
 
+    <color name="TextOnBackground">#000000</color>
+
 
 
 </resources>

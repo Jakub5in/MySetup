@@ -1,27 +1,26 @@
 package com.example.mysetup
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(
-    private val dataList: List<RecyclerData>):
-    RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
+class BikeRecyclerAdapter(
+    private val dataList: List<Bike>):
+    RecyclerView.Adapter<BikeRecyclerAdapter.MyViewHolder>() {
 
         inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            var tv_design: TextView = itemView.findViewById(R.id.tv_design)
+            var tv_design: TextView = itemView.findViewById(R.id.recycler_text)
 
-            fun bind(item: RecyclerData) {
+            fun bind(item: Bike) {
                 tv_design.text = item.name
             }
         }
 
     // Running onItemClick from MainActivity when pressed
     interface OnItemClickListener {
-        fun onItemClick(item: RecyclerData)
+        fun onItemClick(item: Bike)
     }
 
     var onItemClickListener: OnItemClickListener? = null

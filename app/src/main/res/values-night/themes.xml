@@ -22,10 +22,10 @@
         <item name="colorOnError">@color/Black</item>
 
         <!-- Status bar color -->
-        <item name="android:statusBarColor" >@color/EerieBlack</item>
+        <item name="android:statusBarColor">@color/EerieBlack</item>
 
         <!-- Accent color -->
-        <item name="colorAccent" >@color/Citrine</item>
+        <item name="colorAccent">@color/Citrine</item>
 
     </style>
 </resources>
