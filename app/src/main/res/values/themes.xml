@@ -12,7 +12,7 @@
         <!-- Background color -->
         <item name="colorBackgroundFloating">@color/White</item>
         <item name="colorSurface">@color/AntiflashWhite</item>
-        <item name="colorError">@color/Citrine</item>
+        <item name="colorError">@color/HollywoodCerise</item>
 
         <!-- Text color -->
         <item name="colorOnPrimary">@color/White</item>
@@ -25,7 +25,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 
         <!-- Accent color -->
-        <item name="colorAccent">@color/Citrine</item>
+        <item name="colorAccent">@color/HollywoodCerise</item>
 
     </style>
 

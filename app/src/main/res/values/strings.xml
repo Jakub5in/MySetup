@@ -13,5 +13,23 @@
     <string name="wetness">Track wetness</string>
     <string name="slope">Track slope</string>
     <string name="rough">Track roughness</string>
-    <string name="title_activity_setup">Papiez polak</string>
+    <string name="edit">Edit</string>
+    <string name="background">Exploded bike as a background</string>
+    <string name="damper">Rear suspension</string>
+    <string name="fork">Front suspension</string>
+    <string name="rTire">Rear tire</string>
+    <string name="fTire">Front tire</string>
+    <string name="dry">Dry</string>
+    <string name="semidry">Semidry</string>
+    <string name="wet">Wet</string>
+    <string name="downhill">Downhill</string>
+    <string name="allmountain">All-mountain</string>
+    <string name="uphill">Uphill</string>
+    <string name="flow">Flow</string>
+    <string name="mixed">Mixed</string>
+    <string name="rough2">Rough</string>
+    <string name="pModel">Part model</string>
+    <string name="value">Value of setting</string>
+
+    <string name="title_activity_setup">TAS</string>
 </resources>

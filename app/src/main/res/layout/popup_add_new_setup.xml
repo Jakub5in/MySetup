@@ -107,7 +107,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_wetness"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:srcCompat="@drawable/transparent_water_drop_empty" />
+            app:srcCompat="@drawable/transparent_water_drop_empty"
+            android:contentDescription="@string/dry" />
 
         <ImageView
             android:id="@+id/image_semiwet"
@@ -120,7 +121,8 @@
             app:layout_constraintStart_toEndOf="@+id/image_dry"
             app:layout_constraintTop_toBottomOf="@+id/editText"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/transparent_water_drop_half" />
+            app:srcCompat="@drawable/transparent_water_drop_half"
+            android:contentDescription="@string/semidry" />
 
         <ImageView
             android:id="@+id/image_wet"
@@ -130,7 +132,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_wetness"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:srcCompat="@drawable/transparent_water_drop_full" />
+            app:srcCompat="@drawable/transparent_water_drop_full"
+            android:contentDescription="@string/wet" />
 
         <ImageView
             android:id="@+id/image_uphill"
@@ -141,7 +144,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_uphills"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_wetness"
-            app:srcCompat="@drawable/transparent_uphill" />
+            app:srcCompat="@drawable/transparent_uphill"
+            android:contentDescription="@string/uphill" />
 
         <ImageView
             android:id="@+id/image_allmountain"
@@ -152,7 +156,8 @@
             app:layout_constraintEnd_toStartOf="@+id/image_downhill"
             app:layout_constraintStart_toEndOf="@+id/image_uphill"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_wetness"
-            app:srcCompat="@drawable/transparent_allmountain" />
+            app:srcCompat="@drawable/transparent_allmountain"
+            android:contentDescription="@string/allmountain" />
 
         <ImageView
             android:id="@+id/image_downhill"
@@ -163,7 +168,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_uphills"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_wetness"
-            app:srcCompat="@drawable/transparent_downhill" />
+            app:srcCompat="@drawable/transparent_downhill"
+            android:contentDescription="@string/downhill" />
 
         <ImageView
             android:id="@+id/image_mellow"
@@ -174,7 +180,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_terrain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_uphills"
-            app:srcCompat="@drawable/transparent_mellow" />
+            app:srcCompat="@drawable/transparent_mellow"
+            android:contentDescription="@string/flow" />
 
         <ImageView
             android:id="@+id/image_mixed"
@@ -185,7 +192,8 @@
             app:layout_constraintEnd_toStartOf="@+id/image_rough"
             app:layout_constraintStart_toEndOf="@+id/image_mellow"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_uphills"
-            app:srcCompat="@drawable/transparent_mixed" />
+            app:srcCompat="@drawable/transparent_mixed"
+            android:contentDescription="@string/mixed" />
 
         <ImageView
             android:id="@+id/image_rough"
@@ -196,7 +204,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_terrain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar_uphills"
-            app:srcCompat="@drawable/transparent_rough" />
+            app:srcCompat="@drawable/transparent_rough"
+            android:contentDescription="@string/rough2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

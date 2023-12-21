@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="2dp"
@@ -42,7 +41,8 @@
             app:layout_constraintEnd_toStartOf="@+id/image_terrain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler_text"
-            app:srcCompat="@drawable/transparent_allmountain" />
+            app:srcCompat="@drawable/transparent_allmountain"
+            android:contentDescription="@string/slope" />
 
         <ImageView
             android:id="@+id/image_terrain"
@@ -57,7 +57,8 @@
             app:layout_constraintHorizontal_bias="0.537"
             app:layout_constraintStart_toEndOf="@+id/image_direction"
             app:layout_constraintTop_toBottomOf="@+id/recycler_text"
-            app:srcCompat="@drawable/transparent_mixed" />
+            app:srcCompat="@drawable/transparent_mixed"
+            android:contentDescription="@string/rough" />
 
         <ImageView
             android:id="@+id/image_wetness"
@@ -71,7 +72,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_terrain"
             app:layout_constraintTop_toBottomOf="@+id/recycler_text"
-            app:srcCompat="@drawable/transparent_water_drop_half" />
+            app:srcCompat="@drawable/transparent_water_drop_half"
+            android:contentDescription="@string/wetness" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

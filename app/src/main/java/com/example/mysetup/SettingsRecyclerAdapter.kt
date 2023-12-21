@@ -7,46 +7,36 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-// Adapter for Bike recycler
-class BikeRecyclerAdapter(
-    private val dataList: List<Bike>
-    ): RecyclerView.Adapter<BikeRecyclerAdapter.MyViewHolder>() {
-    var onItemClickListener: OnItemClickListener? = null
+
+class SettingsRecyclerAdapter (
+    private val dataList: List<Setting>
+    ): RecyclerView.Adapter<SettingsRecyclerAdapter.MyViewHolder>() {
 
 
     // ViewHolder class to hold views
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var tvDesign: TextView = itemView.findViewById(R.id.recycler_text)
+        private var tvName: TextView = itemView.findViewById(R.id.textView_setting_name)
+        private var tvValue: TextView = itemView.findViewById(R.id.textView_setting_value)
 
         // Bind data to views
-        fun bind(item: Bike) {
-            tvDesign.text = item.name
+        fun bind(item: Setting) {
+            tvName.text = item.name
+            tvValue.text = item.value.toString()
         }
     }
 
 
-    // Interface for item click handling
-    interface OnItemClickListener {
-        fun onItemClick(item: Bike)
-    }
-
-
     // Create new ViewHolders
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingsRecyclerAdapter.MyViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_setting, parent, false)
         return MyViewHolder(view)
     }
 
 
     // Bind data to ViewHolder
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SettingsRecyclerAdapter.MyViewHolder, position: Int) {
         val currentItem = dataList[position]
         holder.bind(currentItem)
-
-        // Set click listener for item
-        holder.itemView.setOnClickListener {
-            onItemClickListener?.onItemClick(currentItem)
-        }
     }
 
 

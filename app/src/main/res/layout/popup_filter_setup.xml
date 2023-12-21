@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -19,12 +18,12 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/title_filter"
-            android:textSize="48sp"
+            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_wetness_filter"
             android:layout_width="0dp"
             android:layout_height="48dp"
@@ -47,7 +46,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_wetness_filter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_wetness_filter"
-            app:srcCompat="@drawable/transparent_water_drop_empty" />
+            app:srcCompat="@drawable/transparent_water_drop_empty"
+            android:contentDescription="@string/dry" />
 
         <ImageView
             android:id="@+id/image_semiwet2"
@@ -60,7 +60,8 @@
             app:layout_constraintStart_toEndOf="@+id/image_dry2"
             app:layout_constraintTop_toBottomOf="@+id/switch_wetness_filter"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/transparent_water_drop_half" />
+            app:srcCompat="@drawable/transparent_water_drop_half"
+            android:contentDescription="@string/semidry" />
 
         <ImageView
             android:id="@+id/image_wet2"
@@ -70,7 +71,8 @@
             app:layout_constraintBottom_toTopOf="@+id/seekBar_wetness_filter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_wetness_filter"
-            app:srcCompat="@drawable/transparent_water_drop_full" />
+            app:srcCompat="@drawable/transparent_water_drop_full"
+            android:contentDescription="@string/wet" />
 
         <SeekBar
             android:id="@+id/seekBar_wetness_filter"
@@ -87,7 +89,7 @@
             app:layout_constraintStart_toStartOf="@+id/switch_wetness_filter"
             app:layout_constraintTop_toBottomOf="@+id/switch_wetness_filter" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_slope_filter"
             android:layout_width="0dp"
             android:layout_height="48dp"
@@ -106,7 +108,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/image_allmountain2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_slope_filter"
-            app:srcCompat="@drawable/transparent_uphill" />
+            app:srcCompat="@drawable/transparent_uphill"
+            android:contentDescription="@string/uphill" />
 
         <ImageView
             android:id="@+id/image_allmountain2"
@@ -117,7 +120,8 @@
             app:layout_constraintEnd_toStartOf="@+id/image_downhill2"
             app:layout_constraintStart_toEndOf="@+id/image_uphill2"
             app:layout_constraintTop_toBottomOf="@+id/switch_slope_filter"
-            app:srcCompat="@drawable/transparent_allmountain" />
+            app:srcCompat="@drawable/transparent_allmountain"
+            android:contentDescription="@string/allmountain" />
 
         <ImageView
             android:id="@+id/image_downhill2"
@@ -127,7 +131,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/image_allmountain2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_slope_filter"
-            app:srcCompat="@drawable/transparent_downhill" />
+            app:srcCompat="@drawable/transparent_downhill"
+            android:contentDescription="@string/downhill" />
 
         <SeekBar
             android:id="@+id/seekBar_slope_filter"
@@ -143,7 +148,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_slope_filter" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_roughness_filter"
             android:layout_width="0dp"
             android:layout_height="48dp"
@@ -165,7 +170,8 @@
             app:layout_constraintEnd_toStartOf="@+id/image_rough2"
             app:layout_constraintStart_toEndOf="@+id/image_mellow2"
             app:layout_constraintTop_toBottomOf="@+id/switch_roughness_filter"
-            app:srcCompat="@drawable/transparent_mixed" />
+            app:srcCompat="@drawable/transparent_mixed"
+            android:contentDescription="@string/mixed" />
 
         <ImageView
             android:id="@+id/image_rough2"
@@ -175,7 +181,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/image_mixed2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_roughness_filter"
-            app:srcCompat="@drawable/transparent_rough" />
+            app:srcCompat="@drawable/transparent_rough"
+            android:contentDescription="@string/rough2" />
 
         <ImageView
             android:id="@+id/image_mellow2"
@@ -185,7 +192,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/image_mixed2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switch_roughness_filter"
-            app:srcCompat="@drawable/transparent_mellow" />
+            app:srcCompat="@drawable/transparent_mellow"
+            android:contentDescription="@string/flow" />
 
         <SeekBar
             android:id="@+id/seekBar_roughness_filter"
