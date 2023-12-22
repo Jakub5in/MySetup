@@ -15,8 +15,8 @@ class SettingsRecyclerAdapter (
 
     // ViewHolder class to hold views
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var tvName: TextView = itemView.findViewById(R.id.textView_setting_name)
-        private var tvValue: TextView = itemView.findViewById(R.id.textView_setting_value)
+        private var tvName: TextView = itemView.findViewById(R.id.RecyclerSetting_TextView_SettingName)
+        private var tvValue: TextView = itemView.findViewById(R.id.RecyclerSetting_TextView_SettingValue)
 
         // Bind data to views
         fun bind(item: Setting) {

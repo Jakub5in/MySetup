@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/PopupFilterSetups_LinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layoutDescription="@xml/popup_filter_setup_scene">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopupFilterSetups_ConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/PopupFilterSetups_TextView_FilterYourSetups"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/title_filter"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/PopupFilterSetups_SwitchCompat_TrackWetness"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:showText="false"
+            android:splitTrack="false"
+            android:text="@string/wetness"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/PopupFilterSetups_TextView_FilterYourSetups"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_TextView_FilterYourSetups" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_WetnessLevel0"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/dry"
+            app:layout_constraintBottom_toTopOf="@+id/PopupFilterSetups_SeekBar_Wetness"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackWetness"
+            app:srcCompat="@drawable/wetness_level0" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_WetnessLevel1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/semidry"
+            app:layout_constraintBottom_toTopOf="@+id/PopupFilterSetups_SeekBar_Wetness"
+            app:layout_constraintEnd_toStartOf="@+id/PopupFilterSetups_ImageView_WetnessLevel2"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toEndOf="@+id/PopupFilterSetups_ImageView_WetnessLevel0"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackWetness"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/wetness_level1" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_WetnessLevel2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/wet"
+            app:layout_constraintBottom_toTopOf="@+id/PopupFilterSetups_SeekBar_Wetness"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackWetness"
+            app:srcCompat="@drawable/wetness_level2" />
+
+        <SeekBar
+            android:id="@+id/PopupFilterSetups_SeekBar_Wetness"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:max="2"
+            android:progress="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackWetness" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/PopupFilterSetups_SwitchCompat_TrackGrade"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/slope"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/PopupFilterSetups_SwitchCompat_TrackWetness"
+            app:layout_constraintStart_toStartOf="@+id/PopupFilterSetups_SwitchCompat_TrackWetness"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SeekBar_Wetness" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_GradeLevel0"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/uphill"
+            app:layout_constraintBottom_toBottomOf="@+id/PopupFilterSetups_ImageView_GradeLevel1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackGrade"
+            app:srcCompat="@drawable/grade_level0" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_GradeLevel1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/allmountain"
+            app:layout_constraintBottom_toTopOf="@+id/PopupFilterSetups_SeekBar_Grade"
+            app:layout_constraintEnd_toStartOf="@+id/PopupFilterSetups_ImageView_GradeLevel2"
+            app:layout_constraintStart_toEndOf="@+id/PopupFilterSetups_ImageView_GradeLevel0"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackGrade"
+            app:srcCompat="@drawable/grade_level1" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_GradeLevel2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/downhill"
+            app:layout_constraintBottom_toBottomOf="@+id/PopupFilterSetups_ImageView_GradeLevel1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackGrade"
+            app:srcCompat="@drawable/grade_level2" />
+
+        <SeekBar
+            android:id="@+id/PopupFilterSetups_SeekBar_Grade"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:max="2"
+            android:progress="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackGrade" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/PopupFilterSetups_SwitchCompat_TrackRoughness"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/rough"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/PopupFilterSetups_SwitchCompat_TrackGrade"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SeekBar_Grade" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_RoughnessLevel0"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/flow"
+            app:layout_constraintBottom_toBottomOf="@+id/PopupFilterSetups_ImageView_RoughnessLevel1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackRoughness"
+            app:srcCompat="@drawable/roughness_level0" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_RoughnessLevel1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/mixed"
+            app:layout_constraintBottom_toTopOf="@+id/PopupFilterSetups_SeekBar_Roughness"
+            app:layout_constraintEnd_toStartOf="@+id/PopupFilterSetups_ImageView_RoughnessLevel2"
+            app:layout_constraintStart_toEndOf="@+id/PopupFilterSetups_ImageView_RoughnessLevel0"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackRoughness"
+            app:srcCompat="@drawable/roughness_level1" />
+
+        <ImageView
+            android:id="@+id/PopupFilterSetups_ImageView_RoughnessLevel2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/rough2"
+            app:layout_constraintBottom_toBottomOf="@+id/PopupFilterSetups_ImageView_RoughnessLevel1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackRoughness"
+            app:srcCompat="@drawable/roughness_level2" />
+
+        <SeekBar
+            android:id="@+id/PopupFilterSetups_SeekBar_Roughness"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:max="2"
+            android:progress="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SwitchCompat_TrackRoughness" />
+
+        <Button
+            android:id="@+id/PopupFilterSetups_Button_Accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/accept"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupFilterSetups_SeekBar_Roughness" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

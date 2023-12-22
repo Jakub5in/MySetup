@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
+
 // Adapter for Bike recycler
 class BikeRecyclerAdapter(
     private val dataList: List<Bike>
@@ -16,7 +17,7 @@ class BikeRecyclerAdapter(
 
     // ViewHolder class to hold views
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var tvDesign: TextView = itemView.findViewById(R.id.recycler_text)
+        private var tvDesign: TextView = itemView.findViewById(R.id.RecyclerBike_TextView_BikeName)
 
         // Bind data to views
         fun bind(item: Bike) {
@@ -33,7 +34,7 @@ class BikeRecyclerAdapter(
 
     // Create new ViewHolders
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_bike, parent, false)
         return MyViewHolder(view)
     }
 

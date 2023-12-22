@@ -17,7 +17,7 @@ import android.widget.EditText
 import android.widget.PopupWindow
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import java.io.Serializable
 
 
 // Activity representing main screen
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), BikeRecyclerAdapter.OnItemClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recyclerView = findViewById(R.id.rv_design)
+        recyclerView = findViewById(R.id.ActivityMain_RecyclerView_Bikes)
         recyclerView.layoutManager = GridLayoutManager(applicationContext, 1)
 
         // Deserialize list
@@ -50,12 +50,12 @@ class MainActivity : AppCompatActivity(), BikeRecyclerAdapter.OnItemClickListene
         }
 
         // Add new button behaviour
-        val buttonShowPopup = findViewById<Button>(R.id.button2)
+        val buttonShowPopup = findViewById<Button>(R.id.ActivityMain_Button_Add)
         buttonShowPopup.setOnClickListener {
             addNew()
         }
 
-        // Adjustie text color based on night mode
+        // Adjust text color based on night mode
         if(isNightModeEnabled()){
             R.color.TextOnBackground = Color.WHITE
         }else{
@@ -91,6 +91,19 @@ class MainActivity : AppCompatActivity(), BikeRecyclerAdapter.OnItemClickListene
     }
 
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable("dataList", dataList as Serializable)
+    }
+
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        dataList = savedInstanceState.getSerializable("dataList") as? MutableList<Bike> ?: mutableListOf()
+        recyclerAdapter.notifyDataSetChanged()
+    }
+
+
     // Passing clicked Bike in recycler to BikeActivity and opening it
     override fun onItemClick(item: Bike) {
         val intent = Intent(this, BikeActivity::class.java)
@@ -103,7 +116,7 @@ class MainActivity : AppCompatActivity(), BikeRecyclerAdapter.OnItemClickListene
     private fun addNew() {
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val rootView = findViewById<View>(android.R.id.content)
-        val view = inflater.inflate(R.layout.popup_add_new, rootView as ViewGroup, false)
+        val view = inflater.inflate(R.layout.popup_add_new_bike, rootView as ViewGroup, false)
 
         val popupWindow = PopupWindow(
             view,
@@ -119,10 +132,10 @@ class MainActivity : AppCompatActivity(), BikeRecyclerAdapter.OnItemClickListene
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
         // Set references to UI elements
-        val editText = view.findViewById<EditText>(R.id.editText)
+        val editText = view.findViewById<EditText>(R.id.PopupAddNewBike_EditText_BikeName)
 
         // Popup window button
-        val buttonAdd = view.findViewById<Button>(R.id.button_add)
+        val buttonAdd = view.findViewById<Button>(R.id.PopupAddNewBike_Button_Add)
         buttonAdd.setOnClickListener {
             val enteredName = editText.text.toString()
 
@@ -132,7 +145,7 @@ class MainActivity : AppCompatActivity(), BikeRecyclerAdapter.OnItemClickListene
         }
 
         // Popup window button
-        val buttonCancel = view.findViewById<Button>(R.id.button_cancel)
+        val buttonCancel = view.findViewById<Button>(R.id.PopupAddNewBike_Button_Cancel)
         buttonCancel.setOnClickListener {
             popupWindow.dismiss()
         }

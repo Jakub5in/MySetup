@@ -32,13 +32,13 @@ class BikePartActivity : AppCompatActivity() {
         }
 
         // Set text displayed at the top
-        val partName: TextView = findViewById(R.id.text_title_bike_part)
-        val partModel: TextView = findViewById(R.id.text_model)
+        val partName: TextView = findViewById(R.id.ActivityBikePart_TextView_PartName)
+        val partModel: TextView = findViewById(R.id.ActivityBikePart_TextView_PartModel)
         partName.text = receivedItem.name
         partModel.text = receivedItem.model
 
         // Initialize and set up the RecyclerView
-        recyclerView = findViewById(R.id.recycler_settings)
+        recyclerView = findViewById(R.id.ActivityBikePart_RecyclerView_Settings)
         recyclerView.layoutManager = GridLayoutManager(applicationContext, 1)
         recyclerView.adapter = run {
             // Filter out settings where isSet is not true
@@ -49,10 +49,10 @@ class BikePartActivity : AppCompatActivity() {
         }
 
         // Set edit button behaviour
-        val buttonDelete = findViewById<Button>(R.id.button_edit_settings)
-        buttonDelete.setBackgroundColor(getThemeColor(this, android.R.attr.colorAccent, 1.0f))
-        buttonDelete.setTextColor(Color.BLACK)
-        buttonDelete.setOnClickListener {
+        val buttonEdit = findViewById<Button>(R.id.ActivityBikePart_Button_Edit)
+        buttonEdit.setBackgroundColor(getThemeColor(this, android.R.attr.colorAccent, 1.0f))
+        buttonEdit.setTextColor(Color.BLACK)
+        buttonEdit.setOnClickListener {
             edit()
         }
     }
@@ -91,10 +91,10 @@ class BikePartActivity : AppCompatActivity() {
         popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0)
 
         // Initialize and set up the RecyclerView in the popup
-        val popupRecyclerView: RecyclerView = popupView.findViewById(R.id.recycler_settings_edit)
+        val popupRecyclerView: RecyclerView = popupView.findViewById(R.id.PopupEditSettings_RecyclerView_Settings)
         popupRecyclerView.layoutManager = GridLayoutManager(applicationContext, 1)
         popupRecyclerView.adapter = run {
-            val adapter = SettingsEditRecyclerAdapter(receivedItem.settings)
+            val adapter = SettingsEditRecyclerAdapter(this, receivedItem.settings)
             adapter
         }
 
@@ -103,12 +103,12 @@ class BikePartActivity : AppCompatActivity() {
         popupWindow.isOutsideTouchable = true
 
         // Popup window button
-        val buttonAccept = popupView.findViewById<Button>(R.id.button_settings_edit_accept)
+        val buttonAccept = popupView.findViewById<Button>(R.id.PopupEditSettings_Button_Accept)
         buttonAccept.setOnClickListener {
             // Get the updated settings from the adapter in the popup RecyclerView
             val popupAdapter = popupRecyclerView.adapter as? SettingsEditRecyclerAdapter
             val updatedSettings = popupAdapter?.getSettings() ?: mutableListOf()
-            val popupTextEdit = popupView.findViewById<TextView>(R.id.editText_model)
+            val popupTextEdit = popupView.findViewById<TextView>(R.id.PopupEditSettings_EditText_PartModel)
 
             // Update receivedItem.settings with the updated settings
             receivedItem.settings = updatedSettings

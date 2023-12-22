@@ -1,5 +1,7 @@
 package com.example.mysetup
+
 import java.io.Serializable
+
 
 // Data class representing a Bike
 data class Bike(
@@ -12,7 +14,7 @@ data class Bike(
         if (this === other) return true
         if (other !is Bike) return false
 
-        return this.name== other.name && this.setups == other.setups
+        return (this.name == other.name) && (this.setups == other.setups)
     }
 
     // Override hashCode to generate a unique hash for each bike

@@ -2,17 +2,20 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/PopupAddNewBike_LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopupAddNewBike_ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/PopupAddNewBike_EditText_BikeName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints="Name"
@@ -27,26 +30,28 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_add"
+            android:id="@+id/PopupAddNewBike_Button_Add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/add"
             android:textSize="34sp"
-            app:layout_constraintEnd_toStartOf="@+id/button_cancel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintEnd_toStartOf="@+id/PopupAddNewBike_Button_Cancel"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewBike_EditText_BikeName" />
 
         <Button
-            android:id="@+id/button_cancel"
+            android:id="@+id/PopupAddNewBike_Button_Cancel"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/cancel"
             android:textSize="34sp"
-            app:layout_constraintStart_toEndOf="@+id/button_add"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewBike_EditText_BikeName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

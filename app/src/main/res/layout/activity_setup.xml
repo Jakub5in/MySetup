@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contraintLayout"
+    android:id="@+id/ActivitySetup_ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".SetupActivity" >
 
     <TextView
-        android:id="@+id/text_setup_name"
+        android:id="@+id/ActivitySetup_TextView_SetupName"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -17,13 +17,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="80dp"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_rear_suspension"
+        app:layout_constraintBottom_toTopOf="@+id/ActivitySetup_Button_RearSuspension"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/image_backgrond"
+        android:id="@+id/ActivitySetup_ImageView_Background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
@@ -37,29 +37,19 @@
         android:contentDescription="@string/background" />
 
     <Button
-        android:id="@+id/button_delete_setup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button_rear_suspension"
+        android:id="@+id/ActivitySetup_Button_RearSuspension"
         android:layout_width="84dp"
         android:layout_height="90dp"
         android:backgroundTint="#4DFFFFFF"
         android:text="@string/damper"
         android:textColor="#00FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/button_front_suspension"
-        app:layout_constraintEnd_toStartOf="@+id/button_front_suspension"
+        app:layout_constraintBottom_toTopOf="@+id/ActivitySetup_Button_FrontSuspension"
+        app:layout_constraintEnd_toStartOf="@+id/ActivitySetup_Button_FrontSuspension"
         app:strokeColor="@color/HollywoodCerise"
         app:strokeWidth="4dp" />
 
     <Button
-        android:id="@+id/button_front_suspension"
+        android:id="@+id/ActivitySetup_Button_FrontSuspension"
         android:layout_width="84dp"
         android:layout_height="90dp"
         android:backgroundTint="#4DFFFFFF"
@@ -67,33 +57,43 @@
         android:textColor="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/image_backgrond"
+        app:layout_constraintStart_toStartOf="@+id/ActivitySetup_ImageView_Background"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/HollywoodCerise"
         app:strokeWidth="4dp" />
 
     <Button
-        android:id="@+id/button_front_wheel"
+        android:id="@+id/ActivitySetup_Button_FrontTire"
         android:layout_width="84dp"
         android:layout_height="90dp"
         android:backgroundTint="#4DFFFFFF"
         android:text="@string/fTire"
         android:textColor="#00FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/button_front_suspension"
-        app:layout_constraintTop_toBottomOf="@+id/button_front_suspension"
+        app:layout_constraintStart_toEndOf="@+id/ActivitySetup_Button_FrontSuspension"
+        app:layout_constraintTop_toBottomOf="@+id/ActivitySetup_Button_FrontSuspension"
         app:strokeColor="@color/HollywoodCerise"
         app:strokeWidth="4dp" />
 
     <Button
-        android:id="@+id/button_rear_wheel"
+        android:id="@+id/ActivitySetup_Button_RearTire"
         android:layout_width="84dp"
         android:layout_height="90dp"
         android:backgroundTint="#4DFFFFFF"
         android:text="@string/rTire"
         android:textColor="#00FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/button_front_suspension"
-        app:layout_constraintTop_toBottomOf="@+id/button_front_wheel"
+        app:layout_constraintEnd_toStartOf="@+id/ActivitySetup_Button_FrontSuspension"
+        app:layout_constraintTop_toBottomOf="@+id/ActivitySetup_Button_FrontTire"
         app:strokeColor="@color/HollywoodCerise"
         app:strokeWidth="4dp" />
+
+    <Button
+        android:id="@+id/ActivitySetup_Button_Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

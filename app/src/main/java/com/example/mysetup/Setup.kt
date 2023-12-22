@@ -26,7 +26,7 @@ data class Setup(
 
         rearTire.setPossibleSettings(tirePossible, tireHelp)
         frontTire.setPossibleSettings(tirePossible, tireHelp)
-        damper.setPossibleSettings(suspensionPossible, tireHelp)
-        fork.setPossibleSettings(suspensionPossible, tireHelp)
+        damper.setPossibleSettings(suspensionPossible, suspensionHelp)
+        fork.setPossibleSettings(suspensionPossible, suspensionHelp)
     }
 }

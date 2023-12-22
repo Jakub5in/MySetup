@@ -40,11 +40,11 @@ class SetupActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set text displayed at the top
-        val setupName: TextView = findViewById(R.id.text_setup_name)
+        val setupName: TextView = findViewById(R.id.ActivitySetup_TextView_SetupName)
         setupName.text = receivedItem.name
 
         // Set delete button behaviour
-        val buttonDelete = findViewById<Button>(R.id.button_delete_setup)
+        val buttonDelete = findViewById<Button>(R.id.ActivitySetup_Button_Delete)
         buttonDelete.setBackgroundColor(getThemeColor(this, android.R.attr.colorAccent, 1.0f))
         buttonDelete.setTextColor(Color.BLACK)
         buttonDelete.setOnClickListener {
@@ -52,25 +52,25 @@ class SetupActivity : AppCompatActivity() {
         }
 
         // Set damper button behaviour
-        val buttonDamper = findViewById<Button>(R.id.button_rear_suspension)
+        val buttonDamper = findViewById<Button>(R.id.ActivitySetup_Button_RearSuspension)
         buttonDamper.setOnClickListener {
             damper()
         }
 
         // Set fork button behaviour
-        val buttonFork = findViewById<Button>(R.id.button_front_suspension)
+        val buttonFork = findViewById<Button>(R.id.ActivitySetup_Button_FrontSuspension)
         buttonFork.setOnClickListener {
             fork()
         }
 
         // Set rearTire button behaviour
-        val buttonRearTire = findViewById<Button>(R.id.button_rear_wheel)
+        val buttonRearTire = findViewById<Button>(R.id.ActivitySetup_Button_RearTire)
         buttonRearTire.setOnClickListener {
             rTire()
         }
 
         // Set frontTire button behaviour
-        val buttonFrontTire = findViewById<Button>(R.id.button_front_wheel)
+        val buttonFrontTire = findViewById<Button>(R.id.ActivitySetup_Button_FrontTire)
         buttonFrontTire.setOnClickListener {
             fTire()
         }
@@ -147,7 +147,7 @@ class SetupActivity : AppCompatActivity() {
         popupDelete.showAtLocation(view, Gravity.CENTER, 0, 0)
 
         // Popup window button
-        val buttonYes = view.findViewById<Button>(R.id.button_yes)
+        val buttonYes = view.findViewById<Button>(R.id.PopupDelete_Button_Yes)
         buttonYes.setOnClickListener {
             popupDelete.dismiss()
             // Passing the object back to BikeActivity, so it can be removed from List
@@ -158,7 +158,7 @@ class SetupActivity : AppCompatActivity() {
         }
 
         // Popup window button
-        val buttonCancel = view.findViewById<Button>(R.id.button_cancel)
+        val buttonCancel = view.findViewById<Button>(R.id.PopupDelete_Button_Cancel)
         buttonCancel.setOnClickListener {
             popupDelete.dismiss()
         }

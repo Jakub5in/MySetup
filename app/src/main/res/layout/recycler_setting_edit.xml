@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RecyclerSettingEdit_CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="2dp"
@@ -10,50 +12,65 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cv_design"
+        android:id="@+id/RecyclerSettingEdit_ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
+        <TextView
+            android:id="@+id/RecyclerSettingEdit_TextView_SettingName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/RecyclerSettingEdit_Button_Help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Help"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RecyclerSettingEdit_TextView_SettingName" />
+
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch_setting"
+            android:id="@+id/RecyclerSettingEdit_SwitchCompat_SwitchSetting"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_setting_name" />
-
-        <TextView
-            android:id="@+id/textView_setting_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/RecyclerSettingEdit_Button_Help"
+            app:layout_constraintTop_toBottomOf="@+id/RecyclerSettingEdit_TextView_SettingName"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/edit_setting_value"
-            android:layout_width="wrap_content"
+            android:id="@+id/RecyclerSettingEdit_EditText_SettingValue"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:autofillHints="Value of setting"
             android:ems="10"
+            android:hint="@string/value"
             android:inputType="number"
             android:textAlignment="textEnd"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_setting_name"
-            android:autofillHints="Value of setting"
-            android:hint="@string/value" />
+            app:layout_constraintStart_toEndOf="@+id/RecyclerSettingEdit_SwitchCompat_SwitchSetting"
+            app:layout_constraintTop_toBottomOf="@+id/RecyclerSettingEdit_TextView_SettingName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

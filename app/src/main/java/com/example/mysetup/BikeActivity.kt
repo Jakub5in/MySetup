@@ -20,7 +20,7 @@ import androidx.appcompat.widget.SwitchCompat
 // Activity representing chosen Bike
 class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListener  {
 
-    private lateinit var receivedItem: Bike         // receivedItem contains the chosen Bike
+    private lateinit var receivedBike: Bike         // receivedBike contains the chosen Bike
     lateinit var recyclerView: RecyclerView         // recycler for displaying setups
     private val REQUEST_CODE_SETUP_ACTIVITY = 1     // Code to launch SetupActivity
 
@@ -35,15 +35,15 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
 
         // Get the Bike if passed from MainActivity
         if (intent.hasExtra("key")) {
-            receivedItem = receivedIntent.getSerializableExtra("key") as Bike
+            receivedBike = receivedIntent.getSerializableExtra("key") as Bike
         }
 
         // Set text displayed at the top
-        val bikeName: TextView = findViewById(R.id.bikeName)
-        bikeName.text = receivedItem.name
+        val bikeName: TextView = findViewById(R.id.ActivityBike_TextView_BikeName)
+        bikeName.text = receivedBike.name
 
         // Set delete button behaviour
-        val buttonDelete = findViewById<Button>(R.id.button_delete)
+        val buttonDelete = findViewById<Button>(R.id.ActivityBike_Button_Delete)
         buttonDelete.setBackgroundColor(getThemeColor(this, android.R.attr.colorAccent, 1.0f))
         buttonDelete.setTextColor(Color.BLACK)
         buttonDelete.setOnClickListener {
@@ -51,22 +51,22 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
         }
 
         // Set add new button behaviour
-        val buttonShowPopupAddNew = findViewById<Button>(R.id.button_add_setup)
+        val buttonShowPopupAddNew = findViewById<Button>(R.id.ActivityBike_Button_Add)
         buttonShowPopupAddNew.setOnClickListener {
             addNew()
         }
 
         // Set filter button behaviour
-        val buttonShowPopupFilter = findViewById<Button>(R.id.button_filter)
+        val buttonShowPopupFilter = findViewById<Button>(R.id.ActivityBike_Button_Filter)
         buttonShowPopupFilter.setOnClickListener {
             filter()
         }
 
         // Initialize and set up the RecyclerView
-        recyclerView = findViewById(R.id.recycler_setups)
+        recyclerView = findViewById(R.id.ActivityBike_RecyclerView_Setups)
         recyclerView.layoutManager = GridLayoutManager(applicationContext, 1)
         recyclerView.adapter = run {
-            val adapter = SetupRecyclerAdapter(receivedItem.setups)
+            val adapter = SetupRecyclerAdapter(receivedBike.setups)
             adapter.onItemClickListener = this
             adapter
         }
@@ -75,7 +75,6 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
 
 
     // Handle the result from SetupActivity
-    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -85,9 +84,9 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
             if (data?.hasExtra("remove") == true) {
                 val removedSetup = data.getSerializableExtra("remove") as? Setup
                 removedSetup?.let {
-                    val index = receivedItem.setups.indexOfFirst { it.name == removedSetup.name }
+                    val index = receivedBike.setups.indexOfFirst { it.name == removedSetup.name }
                     if (index != -1) {
-                        receivedItem.setups.removeAt(index)
+                        receivedBike.setups.removeAt(index)
                         recyclerView.adapter?.notifyItemRemoved(index)
                     }
                 }
@@ -97,9 +96,9 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
             if (data?.hasExtra("updatedSetup") == true) {
                 val updatedSetup = data.getSerializableExtra("updatedSetup") as? Setup
                 updatedSetup?.let {
-                    val index = receivedItem.setups.indexOfFirst { it.name == updatedSetup.name }
+                    val index = receivedBike.setups.indexOfFirst { it.name == updatedSetup.name }
                     if (index != -1) {
-                        receivedItem.setups[index] = updatedSetup
+                        receivedBike.setups[index] = updatedSetup
                         recyclerView.adapter?.notifyItemChanged(index)
                     }
                 }
@@ -109,9 +108,8 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
 
 
     // Called when the activity has detected the user's press of the back key
-    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        val intent = Intent().putExtra("updatedBike", receivedItem)
+        val intent = Intent().putExtra("updatedBike", receivedBike)
         setResult(Activity.RESULT_OK, intent)
         super.onBackPressed()
     }
@@ -145,15 +143,15 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
         popupDelete.showAtLocation(view, Gravity.CENTER, 0, 0)
 
         // Popup window button
-        val buttonYes = view.findViewById<Button>(R.id.button_yes)
+        val buttonYes = view.findViewById<Button>(R.id.PopupDelete_Button_Yes)
         buttonYes.setOnClickListener {
             popupDelete.dismiss()
 
             // Check if setups is not null before attempting to remove an item
-            receivedItem.setups.let {
+            receivedBike.setups.let {
                 // Passing the object back to MainActivity, so it can be removed from List
                 val intent = Intent(this, MainActivity::class.java).apply {
-                    putExtra("remove", receivedItem)
+                    putExtra("remove", receivedBike)
                 }
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
@@ -162,7 +160,7 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
         }
 
         // Popup window button
-        val buttonCancel = view.findViewById<Button>(R.id.button_cancel)
+        val buttonCancel = view.findViewById<Button>(R.id.PopupDelete_Button_Cancel)
         buttonCancel.setOnClickListener {
             popupDelete.dismiss()
         }
@@ -194,24 +192,24 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
         // Set icon colors to matching the theme
-        view.findViewById<ImageView>(R.id.image_uphill).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_allmountain).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_downhill).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_wet).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_semiwet).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_dry).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_mellow).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_mixed).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_rough).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_GradeLevel0).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_GradeLevel1).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_GradeLevel2).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_WetnessLevel2).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_WetnessLevel1).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_WetnessLevel0).setColorFilter(R.color.TextOnBackground)/*
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_RoughnessLevel0).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_RoughnessLevel1).setColorFilter(R.color.TextOnBackground)*/
+        view.findViewById<ImageView>(R.id.PopupAddNewSetup_ImageView_RoughnessLevel2).setColorFilter(R.color.TextOnBackground)
 
         // Set references to UI elements
-        val editText = view.findViewById<EditText>(R.id.editText)
-        val seekBarWetness = view.findViewById<SeekBar>(R.id.seekBar_wetness)
-        val seekBarUphill = view.findViewById<SeekBar>(R.id.seekBar_uphills)
-        val seekBarTerrain = view.findViewById<SeekBar>(R.id.seekBar_terrain)
+        val editText = view.findViewById<EditText>(R.id.PopupAddNewSetup_EditText_SetupName)
+        val seekBarWetness = view.findViewById<SeekBar>(R.id.PopupAddNewSetup_SeekBar_Wetness)
+        val seekBarUphill = view.findViewById<SeekBar>(R.id.PopupAddNewSetup_SeekBar_Grade)
+        val seekBarTerrain = view.findViewById<SeekBar>(R.id.PopupAddNewSetup_SeekBar_Roughness)
 
         // Popup window button
-        val buttonAdd = view.findViewById<Button>(R.id.button_add_setup_popup)
+        val buttonAdd = view.findViewById<Button>(R.id.PopupAddNewSetup_Button_Add)
         buttonAdd.setOnClickListener {
             val enteredName = editText.text.toString()
             val wetness = seekBarWetness.progress
@@ -219,14 +217,14 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
             val terrain = seekBarTerrain.progress
 
             // Add new setup
-            receivedItem.setups.add(Setup(enteredName, wetness, uphill, terrain))
-            val newItemPosition = receivedItem.setups.size - 1
+            receivedBike.setups.add(Setup(enteredName, wetness, uphill, terrain))
+            val newItemPosition = receivedBike.setups.size - 1
             recyclerView.adapter?.notifyItemInserted(newItemPosition)
             popupWindow.dismiss()
         }
 
         // Popup window button
-        val buttonCancel = view.findViewById<Button>(R.id.button_cancel_setup_popup)
+        val buttonCancel = view.findViewById<Button>(R.id.PopupAddNewSetup_Button_Cancel)
         buttonCancel.setOnClickListener {
             popupWindow.dismiss()
         }
@@ -237,7 +235,7 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
     private fun filter() {
         val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val rootView = findViewById<View>(android.R.id.content)
-        val view = inflater.inflate(R.layout.popup_filter_setup, rootView as ViewGroup, false)
+        val view = inflater.inflate(R.layout.popup_filter_setups, rootView as ViewGroup, false)
 
         // Get the dimensions of the screen
         val displayMetrics = resources.displayMetrics
@@ -258,26 +256,26 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
 
         // Set icon colors to matching the theme
-        view.findViewById<ImageView>(R.id.image_uphill2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_allmountain2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_downhill2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_wet2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_semiwet2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_dry2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_mellow2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_mixed2).setColorFilter(R.color.TextOnBackground)
-        view.findViewById<ImageView>(R.id.image_rough2).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_GradeLevel0).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_GradeLevel1).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_GradeLevel2).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_WetnessLevel2).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_WetnessLevel1).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_WetnessLevel0).setColorFilter(R.color.TextOnBackground)/*
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_RoughnessLevel0).setColorFilter(R.color.TextOnBackground)
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_RoughnessLevel1).setColorFilter(R.color.TextOnBackground)*/
+        view.findViewById<ImageView>(R.id.PopupFilterSetups_ImageView_RoughnessLevel2).setColorFilter(R.color.TextOnBackground)
 
         // Set references to UI elements
-        val seekBarWetness = view.findViewById<SeekBar>(R.id.seekBar_wetness_filter)
-        val seekBarUphill = view.findViewById<SeekBar>(R.id.seekBar_slope_filter)
-        val seekBarTerrain = view.findViewById<SeekBar>(R.id.seekBar_roughness_filter)
-        val switchWetness = view.findViewById<SwitchCompat>(R.id.switch_wetness_filter)
-        val switchUphill = view.findViewById<SwitchCompat>(R.id.switch_slope_filter)
-        val switchTerrain = view.findViewById<SwitchCompat>(R.id.switch_roughness_filter)
+        val seekBarWetness = view.findViewById<SeekBar>(R.id.PopupFilterSetups_SeekBar_Wetness)
+        val seekBarUphill = view.findViewById<SeekBar>(R.id.PopupFilterSetups_SeekBar_Grade)
+        val seekBarTerrain = view.findViewById<SeekBar>(R.id.PopupFilterSetups_SeekBar_Roughness)
+        val switchWetness = view.findViewById<SwitchCompat>(R.id.PopupFilterSetups_SwitchCompat_TrackWetness)
+        val switchUphill = view.findViewById<SwitchCompat>(R.id.PopupFilterSetups_SwitchCompat_TrackGrade)
+        val switchTerrain = view.findViewById<SwitchCompat>(R.id.PopupFilterSetups_SwitchCompat_TrackRoughness)
 
         // Popup window button
-        val buttonAdd = view.findViewById<Button>(R.id.button_filter_accept)
+        val buttonAdd = view.findViewById<Button>(R.id.PopupFilterSetups_Button_Accept)
         buttonAdd.setOnClickListener {
             // By default nothing filtered
             var wetness = -1

@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/ActivityBike_RelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/bikeName"
+        android:id="@+id/ActivityBike_TextView_BikeName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,8 +19,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ActivityBike_RecyclerView_Setups"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ActivityBike_Button_Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityBike_TextView_BikeName"
+        tools:listitem="@layout/recycler_bike" />
+
     <Button
-        android:id="@+id/button_delete"
+        android:id="@+id/ActivityBike_Button_Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button_filter"
+        android:id="@+id/ActivityBike_Button_Filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -40,28 +55,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_setups"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_add_setup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bikeName"
-        tools:listitem="@layout/recycler" />
-
     <Button
-        android:id="@+id/button_add_setup"
+        android:id="@+id/ActivityBike_Button_Add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/add"
-        app:layout_constraintBottom_toBottomOf="@+id/button_filter"
-        app:layout_constraintEnd_toStartOf="@+id/button_filter" />
+        app:layout_constraintBottom_toBottomOf="@+id/ActivityBike_Button_Filter"
+        app:layout_constraintEnd_toStartOf="@+id/ActivityBike_Button_Filter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

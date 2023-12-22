@@ -2,22 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/PopupAddNewSetup_LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/PopupAddNewSetup_ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
         <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
+            android:id="@+id/PopupAddNewSetup_EditText_SetupName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:autofillHints="Name"
             android:ems="10"
             android:focusable="true"
@@ -29,65 +33,175 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_WetnessLevel0"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/dry"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Wetness"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_EditText_SetupName"
+            app:srcCompat="@drawable/wetness_level0" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_WetnessLevel1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/semidry"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Wetness"
+            app:layout_constraintEnd_toStartOf="@+id/PopupAddNewSetup_ImageView_WetnessLevel2"
+            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintStart_toEndOf="@+id/PopupAddNewSetup_ImageView_WetnessLevel0"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_EditText_SetupName"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/wetness_level1" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_WetnessLevel2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/wet"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Wetness"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_EditText_SetupName"
+            app:srcCompat="@drawable/wetness_level2" />
+
         <SeekBar
-            android:id="@+id/seekBar_wetness"
+            android:id="@+id/PopupAddNewSetup_SeekBar_Wetness"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="16dp"
             android:max="2"
             android:progress="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_EditText_SetupName" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_GradeLevel0"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/uphill"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Grade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Wetness"
+            app:srcCompat="@drawable/grade_level0" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_GradeLevel1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/allmountain"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Grade"
+            app:layout_constraintEnd_toStartOf="@+id/PopupAddNewSetup_ImageView_GradeLevel2"
+            app:layout_constraintStart_toEndOf="@+id/PopupAddNewSetup_ImageView_GradeLevel0"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Wetness"
+            app:srcCompat="@drawable/grade_level1" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_GradeLevel2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/downhill"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Grade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Wetness"
+            app:srcCompat="@drawable/grade_level2" />
 
         <SeekBar
-            android:id="@+id/seekBar_uphills"
+            android:id="@+id/PopupAddNewSetup_SeekBar_Grade"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="0dp"
             android:layout_height="24dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="16dp"
             android:max="2"
             android:progress="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_wetness" />
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Wetness" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_RoughnessLevel0"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/flow"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Roughness"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Grade"
+            app:srcCompat="@drawable/roughness_level0" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_RoughnessLevel1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/mixed"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Roughness"
+            app:layout_constraintEnd_toStartOf="@+id/PopupAddNewSetup_ImageView_RoughnessLevel2"
+            app:layout_constraintStart_toEndOf="@+id/PopupAddNewSetup_ImageView_RoughnessLevel0"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Grade"
+            app:srcCompat="@drawable/roughness_level1" />
+
+        <ImageView
+            android:id="@+id/PopupAddNewSetup_ImageView_RoughnessLevel2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/rough2"
+            app:layout_constraintBottom_toTopOf="@+id/PopupAddNewSetup_SeekBar_Roughness"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Grade"
+            app:srcCompat="@drawable/roughness_level2" />
 
         <SeekBar
-            android:id="@+id/seekBar_terrain"
+            android:id="@+id/PopupAddNewSetup_SeekBar_Roughness"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="16dp"
             android:max="2"
             android:progress="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_uphills" />
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Grade" />
 
         <Button
-            android:id="@+id/button_add_setup_popup"
+            android:id="@+id/PopupAddNewSetup_Button_Add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="@string/add"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_terrain" />
+            app:layout_constraintEnd_toStartOf="@+id/PopupAddNewSetup_Button_Cancel"
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Roughness" />
 
         <Button
-            android:id="@+id/button_cancel_setup_popup"
+            android:id="@+id/PopupAddNewSetup_Button_Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -97,115 +211,7 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_terrain" />
-
-        <ImageView
-            android:id="@+id/image_dry"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_wetness"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:srcCompat="@drawable/transparent_water_drop_empty"
-            android:contentDescription="@string/dry" />
-
-        <ImageView
-            android:id="@+id/image_semiwet"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_wetness"
-            app:layout_constraintEnd_toStartOf="@+id/image_wet"
-            app:layout_constraintHorizontal_bias="0.509"
-            app:layout_constraintStart_toEndOf="@+id/image_dry"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/transparent_water_drop_half"
-            android:contentDescription="@string/semidry" />
-
-        <ImageView
-            android:id="@+id/image_wet"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_wetness"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:srcCompat="@drawable/transparent_water_drop_full"
-            android:contentDescription="@string/wet" />
-
-        <ImageView
-            android:id="@+id/image_uphill"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_uphills"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_wetness"
-            app:srcCompat="@drawable/transparent_uphill"
-            android:contentDescription="@string/uphill" />
-
-        <ImageView
-            android:id="@+id/image_allmountain"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_uphills"
-            app:layout_constraintEnd_toStartOf="@+id/image_downhill"
-            app:layout_constraintStart_toEndOf="@+id/image_uphill"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_wetness"
-            app:srcCompat="@drawable/transparent_allmountain"
-            android:contentDescription="@string/allmountain" />
-
-        <ImageView
-            android:id="@+id/image_downhill"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_uphills"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_wetness"
-            app:srcCompat="@drawable/transparent_downhill"
-            android:contentDescription="@string/downhill" />
-
-        <ImageView
-            android:id="@+id/image_mellow"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_terrain"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_uphills"
-            app:srcCompat="@drawable/transparent_mellow"
-            android:contentDescription="@string/flow" />
-
-        <ImageView
-            android:id="@+id/image_mixed"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_terrain"
-            app:layout_constraintEnd_toStartOf="@+id/image_rough"
-            app:layout_constraintStart_toEndOf="@+id/image_mellow"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_uphills"
-            app:srcCompat="@drawable/transparent_mixed"
-            android:contentDescription="@string/mixed" />
-
-        <ImageView
-            android:id="@+id/image_rough"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/seekBar_terrain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar_uphills"
-            app:srcCompat="@drawable/transparent_rough"
-            android:contentDescription="@string/rough2" />
+            app:layout_constraintTop_toBottomOf="@+id/PopupAddNewSetup_SeekBar_Roughness" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

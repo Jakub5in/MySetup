@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RecyclerSetting_CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="2dp"
@@ -11,13 +12,13 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cv_design"
+        android:id="@+id/RecyclerSetting_ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
         <TextView
-            android:id="@+id/textView_setting_value"
+            android:id="@+id/RecyclerSetting_TextView_SettingValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -30,7 +31,7 @@
             app:layout_constraintVertical_bias="0.411" />
 
         <TextView
-            android:id="@+id/textView_setting_name"
+            android:id="@+id/RecyclerSetting_TextView_SettingName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -39,7 +40,7 @@
             android:layout_marginBottom="8dp"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/textView_setting_value"
+            app:layout_constraintEnd_toStartOf="@+id/RecyclerSetting_TextView_SettingValue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

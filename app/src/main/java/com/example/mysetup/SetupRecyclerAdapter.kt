@@ -21,10 +21,10 @@ class SetupRecyclerAdapter(
 
     // ViewHolder class to hold views
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvDesign: TextView = itemView.findViewById(R.id.recycler_text)
-        var imageWet: ImageView = itemView.findViewById(R.id.image_wetness)
-        var imageRough: ImageView = itemView.findViewById(R.id.image_terrain)
-        var imageClimb: ImageView = itemView.findViewById(R.id.image_direction)
+        var tvDesign: TextView = itemView.findViewById(R.id.RecyclerSetup_TextView_SetupName)
+        var imageWet: ImageView = itemView.findViewById(R.id.RecyclerSetup_ImageView_Wetness)
+        var imageRough: ImageView = itemView.findViewById(R.id.RecyclerSetup_ImageView_Roughness)
+        var imageClimb: ImageView = itemView.findViewById(R.id.RecyclerSetup_ImageView_Grade)
 
         init {
             // Set click listener for each item
@@ -67,24 +67,24 @@ class SetupRecyclerAdapter(
             // Bind data to views in the item
             holder.tvDesign.text = currentItem.name
             when (setup.wetness) {
-                0 -> holder.imageWet.setImageResource(R.drawable.transparent_water_drop_empty)
-                1 -> holder.imageWet.setImageResource(R.drawable.transparent_water_drop_half)
-                else -> holder.imageWet.setImageResource(R.drawable.transparent_water_drop_full)
+                0 -> holder.imageWet.setImageResource(R.drawable.wetness_level0)
+                1 -> holder.imageWet.setImageResource(R.drawable.wetness_level1)
+                else -> holder.imageWet.setImageResource(R.drawable.wetness_level2)
             }
             when (setup.terrain) {
-                0 -> holder.imageRough.setImageResource(R.drawable.transparent_mellow)
-                1 -> holder.imageRough.setImageResource(R.drawable.transparent_mixed)
-                else -> holder.imageRough.setImageResource(R.drawable.transparent_rough)
+                0 -> holder.imageRough.setImageResource(R.drawable.roughness_level0)
+                1 -> holder.imageRough.setImageResource(R.drawable.roughness_level1)
+                else -> holder.imageRough.setImageResource(R.drawable.roughness_level2)
             }
             when (setup.uphills) {
-                0 -> holder.imageClimb.setImageResource(R.drawable.transparent_uphill)
-                1 -> holder.imageClimb.setImageResource(R.drawable.transparent_allmountain)
-                else -> holder.imageClimb.setImageResource(R.drawable.transparent_downhill)
+                0 -> holder.imageClimb.setImageResource(R.drawable.grade_level0)
+                1 -> holder.imageClimb.setImageResource(R.drawable.grade_level1)
+                else -> holder.imageClimb.setImageResource(R.drawable.grade_level2)
             }
 
             // Apply color filter to images based on text color
             holder.imageWet.setColorFilter(R.color.TextOnBackground)
-            holder.imageRough.setColorFilter(R.color.TextOnBackground)
+            if (setup.terrain == 2) holder.imageRough.setColorFilter(R.color.TextOnBackground);
             holder.imageClimb.setColorFilter(R.color.TextOnBackground)
 
         }
