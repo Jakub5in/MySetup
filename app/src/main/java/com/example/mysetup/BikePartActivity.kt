@@ -113,6 +113,8 @@ class BikePartActivity : AppCompatActivity() {
             // Update receivedItem.settings with the updated settings
             receivedItem.settings = updatedSettings
             receivedItem.model = popupTextEdit.text.toString()
+            val partModel: TextView = findViewById(R.id.ActivityBikePart_TextView_PartModel)
+            partModel.text = receivedItem.model
 
             // Dismiss the popup window
             popupWindow.dismiss()
