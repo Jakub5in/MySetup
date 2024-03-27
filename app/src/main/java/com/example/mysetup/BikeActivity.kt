@@ -92,6 +92,18 @@ class BikeActivity : AppCompatActivity(), SetupRecyclerAdapter.OnItemClickListen
                 }
             }
 
+            if (data?.hasExtra("mirror") == true ){
+                val copiedSetup = data.getSerializableExtra("mirror") as? Setup
+                copiedSetup?.let {
+                    val index = receivedBike.setups.indexOfFirst { it.name == copiedSetup.name }
+                    if (index != -1) {
+                        receivedBike.setups.add(index+1, copiedSetup)
+                        receivedBike.setups[index+1].name = receivedBike.setups[index+1].newName
+                        recyclerView.adapter?.notifyItemInserted(index+1)
+                    }
+                }
+            }
+
             // Update setup if modified
             if (data?.hasExtra("updatedSetup") == true) {
                 val updatedSetup = data.getSerializableExtra("updatedSetup") as? Setup

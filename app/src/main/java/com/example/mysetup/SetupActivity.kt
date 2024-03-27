@@ -2,6 +2,7 @@ package com.example.mysetup
 
 import android.app.Activity
 import android.content.Context
+import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -11,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +51,12 @@ class SetupActivity : AppCompatActivity() {
         buttonDelete.setTextColor(Color.BLACK)
         buttonDelete.setOnClickListener {
             delete()
+        }
+
+        // Set mirror button behaviour
+        val buttonMirror = findViewById<Button>(R.id.ActivitySetup_Button_Mirror)
+        buttonMirror.setOnClickListener{
+            mirror()
         }
 
         // Set damper button behaviour
@@ -162,6 +170,44 @@ class SetupActivity : AppCompatActivity() {
         buttonCancel.setOnClickListener {
             popupDelete.dismiss()
         }
+    }
+
+
+    // Function to handle mirroring
+    private fun mirror(){
+        val inflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val rootView = findViewById<View>(android.R.id.content)
+        val view = inflater.inflate(R.layout.popup_mirror, rootView as ViewGroup, false)
+
+        val popupMirror = PopupWindow(
+            view,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        )
+
+        // Make popup background semitransparent
+        view.setBackgroundColor(getThemeColor(this, android.R.attr.colorBackground, 0.9f))
+        popupMirror.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        popupMirror.inputMethodMode = PopupWindow.INPUT_METHOD_NEEDED
+        popupMirror.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+        // Set references to UI elements
+        val editText = view.findViewById<EditText>(R.id.PopupMirror_TextView_Name)
+
+        // Popup window button
+        val buttonAccept = view.findViewById<Button>(R.id.PopupMirror_Button_Accept)
+        buttonAccept.setOnClickListener {
+            popupMirror.dismiss()
+            // Passing the object back to BikeActivity, so it can be removed from List
+            val intent = Intent(this, BikeActivity::class.java)
+            val sendItem = receivedItem
+            sendItem.newName = editText.text.toString()
+            intent.putExtra("mirror", sendItem)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        }
+
     }
 
 

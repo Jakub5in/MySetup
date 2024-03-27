@@ -30,6 +30,7 @@
     <string name="rough2">Rough</string>
     <string name="pModel">Part model</string>
     <string name="value">Value of setting</string>
+    <string name="mirror">Mirror</string>
 
     <string name="title_activity_setup">TAS</string>
 </resources>

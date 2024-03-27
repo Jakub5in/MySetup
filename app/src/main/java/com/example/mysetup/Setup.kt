@@ -12,7 +12,8 @@ data class Setup(
     var rearTire: BikePart = BikePart("Rear tire"),
     var frontTire: BikePart = BikePart("Front tire"),
     var damper: BikePart = BikePart("Rear suspension"),
-    var fork: BikePart = BikePart("Front suspension")
+    var fork: BikePart = BikePart("Front suspension"),
+    var newName: String = ""                                 // New name for copying
 ) : Serializable {
 
 
